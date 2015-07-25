@@ -1,0 +1,26 @@
+{
+  "name": "steamy",
+  "version": "0.0.0",
+  "authors": [
+    "B. Luckey <ultrabluewolf-fb2@yahoo.com>"
+  ],
+  "main": "app.j",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "lodash": "~3.10.0",
+    "moment": "~2.10.3",
+    "async": "~1.4.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "chai": "~3.2.0"
+  }
+}
