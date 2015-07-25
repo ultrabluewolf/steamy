@@ -1,0 +1,26 @@
+{
+  "name": "steamy",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha tests/*"
+  },
+  "author": "Britney L. <ultrabluewolf-fb2@yahoo.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "~3.2.0",
+    "gulp": "~3.9.0",
+    "mocha": "~2.2.5"
+  },
+  "dependencies": {
+    "config": "~1.14.0",
+    "debug": "~2.2.0",
+    "fs-extra": "~0.22.1",
+    "express": "~4.13.1",
+    "lodash": "~3.10.0",
+    "moment": "~2.10.3",
+    "async": "~1.4.0",
+    "request": "~2.60.0"
+  }
+}
