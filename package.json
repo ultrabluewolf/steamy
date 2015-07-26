@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "postinstall": "bower install && gulp build",
+    "postinstall": "./node_modules/.bin/bower install && ./node_modules/.bin/gulp build",
     "start": "node app",
     "test": "mocha tests/*"
   },
