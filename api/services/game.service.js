@@ -36,10 +36,11 @@ GameService.prototype.getNews = function (id) {
 
   request.get({
     url: config.steam_url + 'ISteamNews/GetNewsForApp/v0002',
+    json: true,
     qs: query
   })
   .then(function (data) {
-    var data = JSON.parse(data).appnews;
+    var data = data.appnews;
     data.count = data.newsitems.length;
 
     data.newsitems = ld.map(data.newsitems, function (newsItem) {

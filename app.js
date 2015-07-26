@@ -4,8 +4,10 @@ global.APP_NAME = require('./package.json').name;
 global.ROOT_DIR = __dirname;
 global.DEBUG    = process.env.NODE_DEBUG;
 
-var express = require('express');
-var app     = express();
+var express    = require('express');
+var app        = express();
+var bodyParser = require('body-parser');
+var cons    = require('consolidate');
 var log     = require('./config/logger').create();
 
 var config = require('config');
@@ -16,8 +18,16 @@ var controllers = require('./api/controllers');
 // assets
 app.use('/dist', express.static('dist'));
 
+// server-side templating
+app.engine('ejs', cons.ejs);
+app.set('view engine', 'ejs');
+app.set('views', global.ROOT_DIR + '/views');
+app.set('view cache', !global.DEBUG);
+
+app.use(bodyParser.json());
+
 app.get('/', function (req, res) {
-  res.send("Yes. I'm alive.");
+  res.render('index', {});
 });
 
 // api routing

@@ -35,10 +35,11 @@ UserService.prototype.getById = function (ids) {
 
   request.get({
     url: config.steam_url + 'ISteamUser/GetPlayerSummaries/v0002',
+    json: true,
     qs: ld.extend(query, steamKey)
   })
   .then(function (data) {
-    data = JSON.parse(data).response;
+    data = data.response;
     data.count = data.players.length;
     data.players = ld.map(data.players, function (player) {
       player.lastlogoff = moment.unix(player.lastlogoff).utc().format();
@@ -87,10 +88,11 @@ UserService.prototype.getGamesById = function (id) {
 
   request.get({
     url: config.steam_url + 'IPlayerService/GetOwnedGames/v0001',
+    json: true,
     qs: ld.extend(query, steamKey)
   })
   .then(function (data) {
-    var data = JSON.parse(data).response;
+    var data = data.response;
     data.count = data.game_count;
 
     data.games = ld.map(data.games, function (game) {
@@ -144,10 +146,11 @@ UserService.prototype.getFriendListById = function (id) {
 
   request.get({
     url: config.steam_url + 'ISteamUser/GetFriendList/v0001',
+    json: true,
     qs: ld.extend(query, steamKey)
   })
   .then(function (data) {
-    data = JSON.parse(data).friendslist;
+    data = data.friendslist;
     var steamIds = ld.map(data.friends, 'steamid');
 
     self.getById(steamIds)
