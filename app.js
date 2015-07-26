@@ -16,6 +16,7 @@ var port   = process.env.PORT || config.port;
 var controllers = require('./api/controllers');
 
 // assets
+app.use('/lib', express.static('bower_components'));
 app.use('/dist', express.static('dist'));
 
 // server-side templating
