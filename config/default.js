@@ -17,8 +17,19 @@ var config = {
 ld.extend(config, grabSecrets());
 
 function grabSecrets() {
-  var contents = fs.readFileSync(global.ROOT_DIR + '/config/secret', 'utf-8');
-  return JSON.parse(contents);
+  var steamApiKey = process.env.STEAM_API_KEY;
+  var contents;
+  if (!steamApiKey) {
+    contents = fs.readFileSync(global.ROOT_DIR + '/config/secret', 'utf-8');
+    contents = JSON.parse(contents);
+  } else {
+    contents = {
+      steam_api: {
+        api_key: steamApiKey
+      }
+    };
+  }
+  return contents;
 }
 
 module.exports = config;
