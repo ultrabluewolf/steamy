@@ -27,12 +27,16 @@ app.set('view cache', !global.DEBUG);
 
 app.use(bodyParser.json());
 
+// api routing
+app.use('/api', controllers);
+
 app.get('/', function (req, res) {
   res.render('index', {});
 });
 
-// api routing
-app.use('/api', controllers);
+app.all('/*', function(req, res) {
+  res.render('index', {});
+});
 
 // starting the server
 //

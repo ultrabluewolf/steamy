@@ -1,0 +1,20 @@
+<div class="user-profile"
+  ng-if="user"
+>
+
+  <h3>{{ user.personaname }}</h3>
+
+  <!-- TODO: rounded corners for icon -->
+  <div class="user-icon">
+    <img ng-src="{{user.avatarfull}}" alt="user avatar" />
+  </div>
+
+  <span>{{ user.timecreated | relativeTime }}</span>
+  
+  <!-- TODO: font icons for online state -->
+  <div class="online-state">
+    <span ng-if="user.personastate === 1">online</span>
+    <span ng-if="user.personastate === 0">last online {{ user.lastlogoff | relativeTime }}</span>
+  </div>
+
+</div>

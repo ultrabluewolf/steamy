@@ -1,0 +1,18 @@
+
+<div>
+  <div game-searchbar></div>
+
+  <ul>
+    <li ng-repeat="news in data.game.newsitems">
+      <h2>
+        <a ng-href="{{ news.url }}">{{ news.title }}</a>
+      </h2>
+      <div>
+        <span>{{ news.author }}</span>
+        <span>{{ news.date | date }}</span>
+      </div>
+      <div ng-bind-html="news.contents"></div>
+    </li>
+  </ul>
+
+</div>

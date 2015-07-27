@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" ng-app="SteamyApp">
 <head>
+  <base href="/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
   <title>Steamy</title>
@@ -11,7 +12,11 @@
 </head>
 <body>
 
+<h1>Steamy</h1>
+
 <p>Yes. I am alive.</p>
+
+<div ui-view></div>
 
 <script src="/dist/js/lib.js"></script>
 <script src="/dist/js/app.js"></script>
