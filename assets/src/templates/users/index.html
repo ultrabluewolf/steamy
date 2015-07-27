@@ -12,7 +12,10 @@
   <div class="friend-list"
     ng-if="isFinished.userProfile && data.friends" 
   >
-    <h2>Friends</h2>
+    <div class="friend-list-banner">
+      <h2>Friends</h2>
+      <span>{{ data.friends.length }}</span>
+    </div>
 
     <ul>
       <li ng-repeat="friend in data.friends" 
@@ -27,7 +30,10 @@
   <div class="game-list"
     ng-if="isFinished.userProfile && data.games"
   >
-    <h2>Games</h2>
+    <div class="game-list-banner">
+      <h2>Games</h2>
+      <span>{{ data.games.length }}</span>
+    </div>
 
     <ul>
       <li ng-repeat="game in data.games">
