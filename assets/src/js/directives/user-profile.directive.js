@@ -26,6 +26,18 @@ app.directive('userProfile', function ($state){
 
       }
 
+      $scope.toCommunityId = function (user) {
+        var str = user.profileurl;
+        if (str) {
+          var matched = str.match(/\/id\/(\S+)/);
+          if (matched && matched[1]) {
+            return matched[1].slice(0, -1)
+          }
+        }
+
+        return '';
+      };
+
     }
   };
 });

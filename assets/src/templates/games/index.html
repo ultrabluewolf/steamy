@@ -1,5 +1,5 @@
 
-<div>
+<div class="game-news-items">
   <div game-searchbar></div>
 
   <ul>
@@ -8,10 +8,12 @@
         <a ng-href="{{ news.url }}">{{ news.title }}</a>
       </h2>
       <div>
-        <span>{{ news.author }}</span>
+        <span>
+          <strong>{{ news.author }}</strong>
+        </span>
         <span>{{ news.date | date }}</span>
       </div>
-      <div ng-bind-html="news.contents"></div>
+      <div class="news-contents" ng-bind-html="news.contents"></div>
     </li>
   </ul>
 

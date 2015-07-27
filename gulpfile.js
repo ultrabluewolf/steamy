@@ -12,7 +12,7 @@ var path = {
   src: './assets/src/',
   dist: './dist',
   js: 'js/**/*.js',
-  sass: 'styles/app.scss',
+  sass: '**/*.scss',
   templates: 'templates/**/*.html',
   lib: [
     './bower_components/jquery/dist/jquery.js',
@@ -81,7 +81,7 @@ gulp.task('templates', function () {
 // sass
 //
 gulp.task('sass', function () {
-  gulp.src(path.src + path.sass)
+  gulp.src(path.src + 'styles/app.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(path.dist + '/css/'));
 });

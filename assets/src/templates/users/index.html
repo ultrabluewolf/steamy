@@ -12,6 +12,8 @@
   <div class="friend-list"
     ng-if="isFinished.userProfile && data.friends" 
   >
+    <h2>Friends</h2>
+
     <ul>
       <li ng-repeat="friend in data.friends" 
         user-profile="friend"
@@ -25,14 +27,16 @@
   <div class="game-list"
     ng-if="isFinished.userProfile && data.games"
   >
+    <h2>Games</h2>
+
     <ul>
       <li ng-repeat="game in data.games">
 
         <h3>{{ game.name }}</h3>
-        <a ng-href="/games/{{ game.appid }}"><span class="fa fa-newspaper-o"></span></a>
+        <a ng-href="/games/{{ game.appid }}"><span class="fa fa-newspaper-o"></span> latest news</a>
 
-        <div class="game-logo">
-          <img ng-src="{{ game.urls.logo }}" alt="game logo" />
+        <div class="game-logo" style="background-image: url({{ game.urls.logo }});">
+          <img ng-hide="true" ng-src="{{ game.urls.logo }}" alt="game logo" />
         </div>
 
         <span ng-if="game.playtime_2weeks">

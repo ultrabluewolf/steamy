@@ -1,4 +1,18 @@
 
 body {
-  color: black;
+  margin: 0 30px;
 }
+
+a {
+  color: #777;
+  text-decoration: none;
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+@import 'user-profile';
+@import 'users';
+@import 'games';
+@import 'game-news-items';
