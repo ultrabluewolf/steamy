@@ -2,13 +2,13 @@
   ng-if="user"
 >
 
-  <h3>
-  <a ng-href="/users/{{ toCommunityId(user) }}">{{ user.personaname }}</a>
-  </h3>
-
   <div class="user-icon" style="background-image: url({{ user.avatarfull }});">
     <img ng-hide="true" ng-src="{{user.avatarfull}}" alt="user avatar" />
   </div>
+
+  <h3>
+    <a ng-href="/users/{{ toCommunityId(user) }}">{{ user.personaname }}</a>
+  </h3>
 
   <span>{{ user.timecreated | relativeTime }}</span>
   

@@ -38,11 +38,13 @@
     <ul>
       <li ng-repeat="game in data.games">
 
-        <h3>{{ game.name }}</h3>
-        <a ng-href="/games/{{ game.appid }}"><span class="fa fa-newspaper-o"></span> latest news</a>
-
         <div class="game-logo" style="background-image: url({{ game.urls.logo }});">
           <img ng-hide="true" ng-src="{{ game.urls.logo }}" alt="game logo" />
+        </div>
+
+        <div>
+          <h3>{{ game.name }}</h3>
+          <a ng-href="/games/{{ game.appid }}"><span class="fa fa-newspaper-o"></span> latest news</a>
         </div>
 
         <span ng-if="game.playtime_2weeks">

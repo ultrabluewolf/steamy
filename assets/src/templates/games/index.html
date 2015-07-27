@@ -8,10 +8,10 @@
         <a ng-href="{{ news.url }}">{{ news.title }}</a>
       </h2>
       <div>
+        <span>{{ news.date | date }}</span>
         <span>
           <strong>{{ news.author }}</strong>
         </span>
-        <span>{{ news.date | date }}</span>
       </div>
       <div class="news-contents" ng-bind-html="news.contents"></div>
     </li>
