@@ -35,7 +35,7 @@ app.directive('userProfile', function ($state){
           }
         }
 
-        return '';
+        return;
       };
 
     }

@@ -6,8 +6,15 @@
     <img ng-hide="true" ng-src="{{user.avatarfull}}" alt="user avatar" />
   </div>
 
-  <h3>
-    <a ng-href="/users/{{ toCommunityId(user) }}">{{ user.personaname }}</a>
+  <h3 ng-init="communityId = toCommunityId(user)">
+    
+    <a ng-if="communityId" 
+      ng-href="/users/{{ communityId }}"
+    >
+      {{ user.personaname }}
+    </a>
+
+    <span ng-if="!communityId">{{ user.personaname }}</span>
   </h3>
 
   <span>{{ user.timecreated | relativeTime }}</span>
@@ -19,6 +26,12 @@
     <span ng-if="user.personastate === 0">
       <span class="fa fa-circle-o"></span> last online {{ user.lastlogoff | relativeTime }}
     </span>
+  </div>
+
+  <div ng-if="user.gameid && user.gameextrainfo" class="now-playing">
+    <a ng-href="/games/{{ user.gameid }}">
+      [{{ user.gameextrainfo }}]
+    </a>
   </div>
 
 </div>

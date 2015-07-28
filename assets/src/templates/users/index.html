@@ -5,7 +5,7 @@
 
   <!-- Profile -->
 
-  <div user-profile="data.user"></div>
+  <div user-profile="data.user" class="main"></div>
 
   <!-- Friends -->
 
@@ -13,7 +13,7 @@
     ng-if="isFinished.userProfile && data.friends" 
   >
     <div class="friend-list-banner">
-      <h2>Friends</h2>
+      <h2>FRIENDS</h2>
       <span>{{ data.friends.length }}</span>
     </div>
 
@@ -31,7 +31,7 @@
     ng-if="isFinished.userProfile && data.games"
   >
     <div class="game-list-banner">
-      <h2>Games</h2>
+      <h2>GAMES</h2>
       <span>{{ data.games.length }}</span>
     </div>
 

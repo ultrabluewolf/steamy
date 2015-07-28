@@ -11,6 +11,10 @@ var html2js    = require('gulp-ng-html2js');
 var path = {
   src: './assets/src/',
   dist: './dist',
+  misc: [
+    './assets/img/**/*',
+    './assets/font/**/*'
+  ], 
   js: 'js/**/*.js',
   sass: '**/*.scss',
   templates: 'templates/**/*.html',
@@ -86,11 +90,21 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(path.dist + '/css/'));
 });
 
+// copy misc files
+//
+gulp.task('copy', function () {
+  gulp.src(path.misc, {
+    base: './assets'
+  })
+    .pipe(gulp.dest(path.dist + '/'));
+});
+
 gulp.task('build', [
   'sass',
   'templates',
   'js:concat',
-  'lib:concat'
+  'lib:concat',
+  'copy'
 ]);
 
 gulp.task('build:min', [
@@ -99,7 +113,8 @@ gulp.task('build:min', [
   'js:concat',
   'lib:concat',
   'js:uglify',
-  'lib:uglify'
+  'lib:uglify',
+  'copy'
 ]);
 
 //
