@@ -2,7 +2,6 @@
 
 var express = require('express');
 var router  = express.Router();
-//var moment  = require('moment');
 var log     = require(global.ROOT_DIR + '/config/logger').subLog('user');
 
 log.debug('user controller');

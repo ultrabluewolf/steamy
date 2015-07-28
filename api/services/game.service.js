@@ -56,3 +56,7 @@ GameService.prototype.getNews = function (id) {
 
   return deferred.promise;
 };
+
+GameService.toAppId = function (gameTitle) {
+
+};

@@ -10,6 +10,15 @@ var log     = require(global.ROOT_DIR + '/config/logger').subLog('user');
 
 log.debug('user service');
 
+// persona states
+var ONLINE_STATE = {
+  OFFLINE: 0,
+  ONLINE: 1,
+  BUSY: 2,
+  AWAY: 3,
+  SNOOZE: 4
+}
+
 var steamKey = {
   key: config.steam_api.api_key
 };
@@ -43,7 +52,9 @@ UserService.prototype.getById = function (ids) {
     data.count = data.players.length;
     data.players = ld.map(data.players, function (player) {
       player.lastlogoff = moment.unix(player.lastlogoff).utc().format();
-      player.timecreated = moment.unix(player.timecreated).utc().format();
+      if (player.timecreated) {
+        player.timecreated = moment.unix(player.timecreated).utc().format();
+      }
       return player;
     });
     deferred.resolve(data);
@@ -163,6 +174,21 @@ UserService.prototype.getFriendListById = function (id) {
           friend.personaname = friend.summary.personaname;
           return friend;
         });
+
+        // ordering by online state and last logoff
+        var byOnlineState = ld.groupBy(
+          ld.sortBy(data.friends, function (friend) {
+            return -moment(friend.summary.lastlogoff).unix();
+          }), 'summary.personastate'
+        );
+
+        // move offline friends to the end
+        byOnlineState[100] = byOnlineState[ONLINE_STATE.OFFLINE];
+        byOnlineState[ONLINE_STATE.OFFLINE] = [];
+
+        data.friends = ld.flatten(
+          ld.values(byOnlineState)
+        );
 
         deferred.resolve(data);
       })
