@@ -12,6 +12,7 @@ var log     = require('./config/logger').create();
 
 var config = require('config');
 var port   = process.env.PORT || config.port;
+var redis  = require('./config/redis');
 
 var controllers = require('./api/controllers');
 
@@ -36,6 +37,12 @@ app.get('/', function (req, res) {
 
 app.all('/*', function(req, res) {
   res.render('index', {});
+});
+
+process.on('SIGINT', function () {
+  log.info('housekeeping..');
+  redis.quit();
+  process.exit(0);
 });
 
 // starting the server

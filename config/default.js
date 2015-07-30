@@ -18,18 +18,22 @@ ld.extend(config, grabSecrets());
 
 function grabSecrets() {
   var steamApiKey = process.env.STEAM_API_KEY;
-  var contents;
-  if (!steamApiKey) {
-    contents = fs.readFileSync(global.ROOT_DIR + '/config/secret', 'utf-8');
+  var redisUrl    = process.env.REDIS_URL;
+  var secrets = {
+    steam_api: {
+      api_key: steamApiKey
+    },
+    redis: redisUrl
+  };
+
+  if (!steamApiKey || !redisUrl) {
+    var contents = fs.readFileSync(global.ROOT_DIR + '/config/secret', 'utf-8');
     contents = JSON.parse(contents);
-  } else {
-    contents = {
-      steam_api: {
-        api_key: steamApiKey
-      }
-    };
+    secrets.steam_api.api_key = steamApiKey || contents.steam_api.api_key;
+    secrets.redis = redisUrl || contents.redis;
   }
-  return contents;
+
+  return secrets;
 }
 
 module.exports = config;

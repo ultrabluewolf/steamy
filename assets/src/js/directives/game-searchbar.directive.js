@@ -15,10 +15,17 @@ app.directive('gameSearchbar', function ($state, GameService){
 
       $scope.data = {};
 
-      $scope.searchForUser = function (gameId) {
-        $state.go('games', {id: gameId});
-        // GameService.get(gameId).then(function (data) {
+      $scope.searchForGameNews = function (gameQuery) {
+        
+        if (isNaN(gameQuery)) {
+          GameService.toAppId(gameQuery).then(function (gameId) {
+            $state.go('games', {id: gameId});
+          });
 
+        } else {
+          $state.go('games', {id: gameQuery});
+        }
+        // GameService.get(gameId).then(function (data) {
         // });
       };
       

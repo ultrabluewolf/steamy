@@ -7,6 +7,7 @@ var log     = require(global.ROOT_DIR + '/config/logger').subLog('game');
 log.debug('game controller');
 
 var utils       = require('../utils');
+var Game        = require('../models').Game;
 var gameService = require('../services').games;
 
 var respWrapper = utils.ctrlHelpers.respWrapper;
@@ -30,5 +31,32 @@ router.get('/:id/news', function(req, res) {
       res.json(respWrapper(errMsg));
     });
 });
+
+router.get('/find', function (req, res) {
+  Game.getByTitle(req.query.title).then(function (game) {
+    res.json(respWrapper(null, game));
+  });
+});
+
+router.get('/', function (req, res) {
+  Game.all().then(function (games) {
+    res.json(respWrapper(null, games));
+  });
+});
+
+// router.post('/', function (req, res) {
+//   var appId = req.body.app_id;
+//   var gameTitle = req.body.game_title;
+  
+//   if (!appId || !gameTitle) {
+//     return res.status(400).json(respWrapper('app_id and game_title are required!'));
+//   }
+
+//   var game = new Game(appId, gameTitle);
+  
+//   game.save().then(function (game) {
+//     res.json(respWrapper(null, game));
+//   });
+// });
 
 module.exports = router;
