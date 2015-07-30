@@ -5,7 +5,9 @@
     class="input-search"
     type="text"
     ng-model="data.input"
-    placeholder="game title / gameid" />
+    placeholder="game title / gameid"
+    on-enter="searchForGameNews(data.input)"
+  />
   <button 
     class="btn-icon" 
     ng-click="searchForGameNews(data.input)"

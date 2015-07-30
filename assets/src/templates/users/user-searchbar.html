@@ -5,7 +5,9 @@
     class="input-search"
     type="text"
     ng-model="data.input"
-    placeholder="username (from profile url)" />
+    placeholder="username (from profile url)"
+    on-enter="searchForUser(data.input)"
+  />
   <button
     class="btn-icon" 
     ng-click="searchForUser(data.input)"
