@@ -26,6 +26,9 @@ function GameService() {
 //    appid=440&count=3&maxlength=300&format=json
 //
 GameService.prototype.getNews = function (id) {
+  if (!id) {
+    throw new Error('id required!');
+  }
   var deferred = Promise.defer();
 
   var query = {

@@ -46,7 +46,7 @@ describe('UserService', function () {
 
     it('should require a parameter', function () {
       try {
-        userService.getById('1234');
+        userService.getById();
       } catch (ex) {
         assert.ok(ex);
         return;
@@ -77,7 +77,7 @@ describe('UserService', function () {
 
     it('should require a parameter', function () {
       try {
-        userService.getGamesById('1234');
+        userService.getGamesById();
       } catch (ex) {
         assert.ok(ex);
         return;
@@ -110,7 +110,7 @@ describe('UserService', function () {
 
     it('should require a parameter', function () {
       try {
-        userService.getFriendListById('1234');
+        userService.getFriendListById();
       } catch (ex) {
         assert.ok(ex);
         return;

@@ -35,6 +35,9 @@ function UserService() {
 //    key=XXXXXXXXXXXXXXXXXXXXXXX&steamids=76561197960435530
 //
 UserService.prototype.getById = function (ids) {
+  if (!ids) {
+    throw new Error('id(s) required!');
+  }
   var deferred = Promise.defer();
   ids = ld.isArray(ids) ? ids : [ids];
 
@@ -69,6 +72,9 @@ UserService.prototype.getById = function (ids) {
 // Get UserSummary by userid
 //
 UserService.prototype.getByUserId = function (userId) {
+  if (!userId) {
+    throw new Error('id required!');
+  }
   var self = this;
   var deferred = Promise.defer();
 
@@ -89,6 +95,9 @@ UserService.prototype.getByUserId = function (userId) {
 //   key=XXXXXXXXXXXXXXXXX&steamid=76561197960434622&format=json
 //
 UserService.prototype.getGamesById = function (id) {
+  if (!id) {
+    throw new Error('id required!');
+  }
   var gameImgUrl = config.steam_media_url.games;
   var deferred = Promise.defer();
 
@@ -127,6 +136,9 @@ UserService.prototype.getGamesById = function (id) {
 // Get OwnedGames by userid
 //
 UserService.prototype.getGames = function (userId) {
+  if (!userId) {
+    throw new Error('id required!');
+  }
   var self = this;
   var deferred = Promise.defer();
 
@@ -147,6 +159,9 @@ UserService.prototype.getGames = function (userId) {
 //   key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&steamid=76561197960435530&relationship=friend
 //
 UserService.prototype.getFriendListById = function (id) {
+  if (!id) {
+    throw new Error('id required!');
+  }
   var self = this;
   var deferred = Promise.defer();
 
@@ -206,6 +221,9 @@ UserService.prototype.getFriendListById = function (id) {
 // get friend list for userid
 //
 UserService.prototype.getFriendList = function (userId) {
+  if (!userId) {
+    throw new Error('id required!');
+  }
   var self = this;
   var deferred = Promise.defer();
 
@@ -223,6 +241,9 @@ UserService.prototype.getFriendList = function (userId) {
 // convert userid to steamid
 //
 UserService.toSteamId = function (userId) {
+  if (!userId) {
+    throw new Error('id required!');
+  }
   var deferred = Promise.defer();
 
   request.get({
