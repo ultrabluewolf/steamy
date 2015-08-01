@@ -124,6 +124,10 @@ UserService.prototype.getGamesById = function (id) {
       return game;
     });
 
+    data.games = ld.sortBy(data.games, function (game) {
+      return -game.playtime_forever;
+    });
+
     deferred.resolve(data);
   })
   .catch(function (err) {

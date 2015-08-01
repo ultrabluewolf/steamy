@@ -92,6 +92,10 @@ describe('UserService', function () {
     });
 
     it('should contain date strings', function () {
+      ownedGamesMock.response.games = ld.sortBy(ownedGamesMock.response.games, function (game) {
+        return -game.playtime_forever;
+      });
+
       userService.getGamesById('1234').then(function (data) {
         ld.forEach(testUtils.range(ownedGamesMock.response.game_count), function (i) {
           assert.include(data.games[i].urls.icon, ownedGamesMock.response.games[i].img_icon_url);
