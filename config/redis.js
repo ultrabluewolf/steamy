@@ -2,7 +2,7 @@
 
 var Redis  = require('ioredis');
 var config = require('config');
-var log     = require(global.ROOT_DIR + '/config/logger').subLog('redis');
+var log     = require('../config/logger').subLog('redis');
 
 var redis = module.exports = new Redis(config.redis);
 

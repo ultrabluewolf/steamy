@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router  = express.Router();
-var log     = require(global.ROOT_DIR + '/config/logger').subLog('game');
+var log     = require('../../config/logger').subLog('game');
 
 log.debug('game controller');
 

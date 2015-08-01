@@ -6,7 +6,7 @@ var Promise = require('bluebird');
 var ld      = require('lodash');
 var moment  = require('moment');
 var config  = require('config');
-var log     = require(global.ROOT_DIR + '/config/logger').subLog('user');
+var log     = require('../../config/logger').subLog('user');
 
 log.debug('user service');
 

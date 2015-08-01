@@ -8,7 +8,7 @@ var moment  = require('moment');
 var config  = require('config');
 
 var redis   = require('../../config/redis');
-var log     = require(global.ROOT_DIR + '/config/logger').subLog('game');
+var log     = require('../../config/logger').subLog('game');
 
 var gameService = require('../services').games;
 

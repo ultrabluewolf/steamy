@@ -1,0 +1,23 @@
+{
+  "response": {
+    "players": [
+      {
+        "steamid": "1234",
+        "communityvisibilitystate": 3,
+        "profilestate": 1,
+        "personaname": "YouKnow",
+        "lastlogoff": 1438295003,
+        "profileurl": "http://steamcommunity.com/id/youknow2345/",
+        "avatar": "https://a.link.to.avatar.jpg",
+        "avatarmedium": "https://another.link.to.avatar.jpg",
+        "avatarfull": "https://better.link.jpg",
+        "personastate": 0,
+        "primaryclanid": "5434564345",
+        "timecreated": 1104676080,
+        "personastateflags": 0,
+        "loccountrycode": "AB",
+        "locstatecode": "JB"
+      }
+    ]
+  }
+}

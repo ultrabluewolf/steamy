@@ -1,0 +1,37 @@
+{
+  "response": {
+    "game_count": 4,
+    "games": [
+      {
+        "appid": 12343,
+        "name": "Fun Title",
+        "playtime_forever": 56,
+        "img_icon_url": "6b0312cda02f5f477eaa2f3318c307ff9acafbb5",
+        "img_logo_url": "af890f848dd606ac2fd4415de3e5b5e7a46fcb9f",
+        "has_community_visible_stats": true
+      },
+      {
+        "appid": 32432,
+        "name": "Snorefest",
+        "playtime_forever": 23,
+        "img_icon_url": "95be6d331fc61f145797517ca437c9775f64b41c",
+        "img_logo_url": "6bdb6f3720a8c7a5460fbae3cf60cb930279897d",
+        "has_community_visible_stats": true
+      },
+      {
+        "appid": 65767,
+        "name": "Best Game",
+        "playtime_forever": 879,
+        "img_icon_url": "746d1cd48fc2e57d579b05boe9eccbau5859o549",
+        "img_logo_url": "d37dedac7104d1683385d045314d2315399e3dae"
+      },
+      {
+        "appid": 3234234,
+        "name": "Horrifying",
+        "playtime_forever": 22,
+        "img_icon_url": "2c08de653e8b273eeb55be5bf674505ca023e381",
+        "img_logo_url": "75b8a52acfb05abda67977ac4eb5af24b0ddf01e"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "appnews": {
+    "appid": 123123,
+    "newsitems": [
+      {
+        "gid": "123456123456",
+        "title": "Headlines",
+        "url": "http://link.to.article.com/123456123456",
+        "is_external_url": true,
+        "author": "Bobby",
+        "contents": "This should be text of an article.",
+        "feedlabel": "Feed of Info",
+        "date": 1438309147,
+        "feedname": "foi"
+      },
+      {
+        "gid": "163456123456",
+        "title": "Headlines 2",
+        "url": "http://link.to.article.com/163456123456",
+        "is_external_url": true,
+        "author": "Bobby",
+        "contents": "This should be text of an article.",
+        "feedlabel": "Feed of Info",
+        "date": 1354338000,
+        "feedname": "foi"
+      },
+      {
+        "gid": "163456123656",
+        "title": "Headlines 3",
+        "url": "http://link.to.article.com/163456123656",
+        "is_external_url": true,
+        "author": "Bobby",
+        "contents": "This should be text of an article.",
+        "feedlabel": "Feed of Info",
+        "date": 1359003600,
+        "feedname": "foi"
+      },
+      {
+        "gid": "163578123456",
+        "title": "Headlines4",
+        "url": "http://link.to.article.com/163578123456",
+        "is_external_url": true,
+        "author": "Bobby",
+        "contents": "This should be text of an article.",
+        "feedlabel": "Feed of Info",
+        "date": 1359435600,
+        "feedname": "foi"
+      },
+      {
+        "gid": "163786323456",
+        "title": "Headlines5",
+        "url": "http://link.to.article.com/163786323456",
+        "is_external_url": true,
+        "author": "Bobby",
+        "contents": "This should be text of an article.",
+        "feedlabel": "Feed of Info",
+        "date": 1427601600,
+        "feedname": "foi"
+      }
+    ]
+  }
+}
