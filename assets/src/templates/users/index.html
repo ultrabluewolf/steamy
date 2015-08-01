@@ -47,12 +47,19 @@
           <a ng-href="/games/{{ game.appid }}"><span class="fa fa-newspaper-o"></span> latest news</a>
         </div>
 
-        <span ng-if="game.playtime_2weeks">
-          {{ game.playtime_2weeks }} hrs
-        </span>
-        <span ng-if="game.playtime_forever > 0">
-          {{ game.playtime_forever }} hrs
-        </span>
+        <div class="playtime"
+          ng-if="game.playtime_forever > 0"
+        >
+          <div class="top-label">
+            <strong>time played</strong>
+          </div>
+          <div ng-if="game.playtime_2weeks">
+            recently {{ game.playtime_2weeks | minToHrs }}
+          </div>
+          <div ng-if="game.playtime_forever > 0">
+            overall {{ game.playtime_forever | minToHrs }}
+          </div>
+        </div>
 
       </li>
     </ul>
