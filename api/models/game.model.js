@@ -19,7 +19,7 @@ module.exports = Game;
 var KEY = 'gametitle:id';
 
 function Game(appId, gameTitle) {
-  if (!appId && !gameTitle) {
+  if (!appId || !gameTitle) {
     throw new Error('app id and game title are required!');
   }
 
@@ -48,7 +48,14 @@ Game.getByTitle = function (gameTitle) {
   gameTitle = gameTitle.trim().toLowerCase();
 
   redis.hget(KEY, gameTitle).then(function (appId) {
-    var game = new Game(appId, gameTitle);
+    var game;
+
+    try {
+      game = new Game(appId, gameTitle);
+    } catch (ex) {
+      return deferred.reject(ex);
+    }
+
     deferred.resolve(game);
   });
 

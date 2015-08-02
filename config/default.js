@@ -8,6 +8,10 @@ var config = {
 
   steam_url: 'http://api.steampowered.com/',
   steam_community_url: 'http://steamcommunity.com/id/',
+  steam_store_url: {
+    games: 'http://store.steampowered.com/app/',
+    search: 'http://store.steampowered.com/search/'
+  },
   steam_media_url: {
     games: 'http://media.steampowered.com/steamcommunity/public/images/apps/{appid}/{hash}.jpg'
   }

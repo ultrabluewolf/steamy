@@ -33,10 +33,54 @@ router.get('/:id/news', function(req, res) {
 });
 
 router.get('/find', function (req, res) {
-  Game.getByTitle(req.query.title).then(function (game) {
-    res.json(respWrapper(null, game));
-  });
+
+  Game.getByTitle(req.query.title)
+    .then(function (game) {
+      return res.json(respWrapper(null, game));
+    })
+    .catch(function (err) {
+      gameService.toAppId(req.query.title)
+        .then(function (data) {
+          
+          if (req.query.title === data.game_title) {
+            var game = new Game(data.app_id, data.game_title);
+            game.save().then(function () {
+              log.info('stored', game);
+            });
+          }
+
+          res.json(respWrapper(null, data));
+        })
+        .catch(function (err) {
+          var errMsg = {
+            name: err.name,
+            statusCode: err.statusCode,
+            message: err.message
+          };
+          log.error(errMsg);
+          res.json(respWrapper(errMsg));
+        });
+    });
+
 });
+
+// router.get('/:id', function(req, res) {
+//   var id = req.params.id;
+
+//   gameService.get(id)
+//     .then(function (data) {
+//       res.json(respWrapper(null, data));
+//     })
+//     .catch(function (err) {
+//       var errMsg = {
+//         name: err.name,
+//         statusCode: err.statusCode,
+//         message: err.message
+//       };
+//       log.error(errMsg);
+//       res.json(respWrapper(errMsg));
+//     });
+// });
 
 router.get('/', function (req, res) {
   Game.all().then(function (games) {
