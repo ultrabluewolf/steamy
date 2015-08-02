@@ -28,27 +28,20 @@ app.service('GameService', function ($http, $q) {
   };
 
   this.toAppId = function (gameQuery) {
-    //var cacheKey = gameQuery + '.app_id';
     var deferred = $q.defer();
 
-    //if (!_cache[cacheKey]) {
-      $http({
-        url: BASE_URL + 'find',
-        params: {
-          title: gameQuery
-        }
-      })
-        .success(function (data) {
-          //_cache[cacheKey] = data.body;
-          deferred.resolve(data.body.app_id);
+    $http({
+      url: BASE_URL + 'find',
+      params: {
+        title: gameQuery
+      }
+    })
+      .success(function (data) {
+        deferred.resolve(data.body.app_id);
 
-        }).error(function (err) {
-          deferred.reject(err);
-        });
-
-    // } else {
-    //   deferred.resolve(_cache[cacheKey]);
-    // }
+      }).error(function (err) {
+        deferred.reject(err);
+      });
 
     return deferred.promise;
   };

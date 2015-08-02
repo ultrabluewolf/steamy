@@ -1,7 +1,11 @@
 (function () {
 'use strict';
 
-app.directive('gameSearchbar', function ($state, GameService){
+app.directive('gameSearchbar', function (
+  $state,
+  GameService,
+  LoadingIndicator
+){
   
   return {
     scope: {},
@@ -18,7 +22,9 @@ app.directive('gameSearchbar', function ($state, GameService){
       $scope.searchForGameNews = function (gameQuery) {
         
         if (isNaN(gameQuery)) {
+          LoadingIndicator.loading();
           GameService.toAppId(gameQuery).then(function (gameId) {
+            LoadingIndicator.ready();
             $state.go('games', {id: gameId});
           });
 
