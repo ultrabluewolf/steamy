@@ -125,6 +125,10 @@ UserService.prototype.getGamesById = function (id) {
     });
 
     data.games = ld.sortBy(data.games, function (game) {
+      return game.name.toLowerCase();
+    });
+
+    data.games = ld.sortBy(data.games, function (game) {
       return -game.playtime_forever;
     });
 
