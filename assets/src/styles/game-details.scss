@@ -1,0 +1,29 @@
+
+.game-details {
+
+  .banner {
+    margin: 30px -30px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .desc {
+    margin-bottom: 7px;
+  }
+
+  .tags {
+    margin: 0;
+    margin-top: 10px;
+
+    li {
+      display: inline-block;
+      margin-right: 15px;
+      padding: 6px 10px;
+      background: black;
+      color: white;
+      border-radius: 6px;
+    }
+  }
+
+}

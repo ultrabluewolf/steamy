@@ -1,0 +1,28 @@
+
+<div class="game-details" ng-if="game">
+
+  <h2 class="hide">
+    <a ng-href="{{ game.store_page }}">{{ game.title }}</a>
+  </h2>
+
+  <div class="banner">
+    <a ng-href="{{ game.store_page }}">
+      <img ng-src="{{ game.img }}" alt="{{ game.title }}" />
+    </a>
+  </div>
+
+  <div class="desc">
+    {{ game.description }}
+  </div>
+
+  <div class="released">
+    <strong>released date:</strong> {{ game.release_date | date }}
+  </div>
+
+  <ul class="tags">
+    <li ng-repeat="tag in game.tags">
+      {{ tag }}
+    </li>
+  </ul>
+
+</div>

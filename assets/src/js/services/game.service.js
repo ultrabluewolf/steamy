@@ -6,6 +6,27 @@ app.service('GameService', function ($http, $q) {
 
   var BASE_URL = '/api/games/';
 
+  this.get = function (gameId) {
+    var cacheKey = gameId;
+    var deferred = $q.defer();
+
+    if (!_cache[cacheKey]) {
+      $http.get(BASE_URL + gameId)
+        .success(function (data) {
+          _cache[cacheKey] = data.body;
+          deferred.resolve(data.body);
+
+        }).error(function (err) {
+          deferred.reject(err);
+        });
+
+    } else {
+      deferred.resolve(_cache[cacheKey]);
+    }
+
+    return deferred.promise;
+  };  
+
   this.getNews = function (gameId) {
     var cacheKey = gameId + '.news';
     var deferred = $q.defer();

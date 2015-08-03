@@ -2,11 +2,13 @@
 <div class="game-news-items">
   <div game-searchbar></div>
 
+  <div game-details="data.game"></div>
+
   <ul>
-    <li ng-repeat="news in data.game.newsitems">
-      <h2>
+    <li ng-repeat="news in data.newsitems">
+      <h3>
         <a ng-href="{{ news.url }}">{{ news.title }}</a>
-      </h2>
+      </h3>
       <div>
         <span>{{ news.date | date }}</span>
         <span>

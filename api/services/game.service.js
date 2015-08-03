@@ -61,30 +61,50 @@ GameService.prototype.getNews = function (id) {
   return deferred.promise;
 };
 
-// GameService.prototype.get = function (id) {
-//   if (!id) {
-//     throw new Error('id required!');
-//   }
-//   var deferred = Promise.defer();
+// get metadata for requested appid
+//
+GameService.prototype.get = function (id) {
+  if (!id) {
+    throw new Error('id required!');
+  }
+  var deferred = Promise.defer();
 
-//   request.get(config.steam_store_url.games + id)
-//   .then(function (data) {
-//     var game = {};
-//     var $ = cheerio.load(data);
-//     var TITLE = '.apphub_AppName';
+  request.get({
+    url: config.steam_store_url.games + id,
+    jar: generateJarForStorePage()
+  })
+  .then(function (data) {
+    var game = {};
+    var $ = cheerio.load(data);
 
-//     console.log($.html());
+    var TITLE = '.apphub_AppName';
+    var IMG   = '.game_header_image_ctn img';
+    var DESC  = '.game_description_snippet';
+    var DATE  = '.release_date .date';
+    var TAGS  = '.popular_tags a';
 
-//     game.title = $(TITLE).text();
+    game.title        = $(TITLE).text();
+    game.img          = $(IMG).attr('src');
+    game.release_date = $(DATE).text();
+    game.description  = $(DESC).text().trim();
+    game.tags         = [];
+    game.store_page   = config.steam_store_url.games + id;
 
-//     deferred.resolve(game);
-//   })
-//   .catch(function (err) {
-//     deferred.reject(err);
-//   });
+    game.release_date = moment(game.release_date).utc().format();
 
-//   return deferred.promise;
-// };
+    $(TAGS).each(function () {
+      game.tags.push($(this).text().trim());
+    });
+    game.tags = game.tags.splice(0, 5);
+
+    deferred.resolve(game);
+  })
+  .catch(function (err) {
+    deferred.reject(err);
+  });
+
+  return deferred.promise;
+};
 
 GameService.prototype.toAppId = function (title) {
   if (!title) {
@@ -140,3 +160,20 @@ GameService.prototype.toAppId = function (title) {
 
   return deferred.promise;
 };
+
+// cookie helper for app pages
+//
+function generateJarForStorePage() {
+  var url = 'http://store.steampowered.com';
+  var jar = request.jar();
+
+  var cookies = [
+    request.cookie('lastagecheckage="1-January-1915"'),
+    request.cookie('birthtime="' + moment('01/01/1915', 'MM/dd/yyyy').unix() + '"')
+  ];
+  
+  jar.setCookie(cookies[0], url);
+  jar.setCookie(cookies[1], url);;
+
+  return jar;
+}

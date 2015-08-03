@@ -32,6 +32,8 @@ router.get('/:id/news', function(req, res) {
     });
 });
 
+// find appid for queried title
+//
 router.get('/find', function (req, res) {
 
   Game.getByTitle(req.query.title)
@@ -64,23 +66,25 @@ router.get('/find', function (req, res) {
 
 });
 
-// router.get('/:id', function(req, res) {
-//   var id = req.params.id;
+//
+//
+router.get('/:id', function(req, res) {
+  var id = req.params.id;
 
-//   gameService.get(id)
-//     .then(function (data) {
-//       res.json(respWrapper(null, data));
-//     })
-//     .catch(function (err) {
-//       var errMsg = {
-//         name: err.name,
-//         statusCode: err.statusCode,
-//         message: err.message
-//       };
-//       log.error(errMsg);
-//       res.json(respWrapper(errMsg));
-//     });
-// });
+  gameService.get(id)
+    .then(function (data) {
+      res.json(respWrapper(null, data));
+    })
+    .catch(function (err) {
+      var errMsg = {
+        name: err.name,
+        statusCode: err.statusCode,
+        message: err.message
+      };
+      log.error(errMsg);
+      res.json(respWrapper(errMsg));
+    });
+});
 
 router.get('/', function (req, res) {
   Game.all().then(function (games) {
