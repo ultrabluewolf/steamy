@@ -24,7 +24,7 @@ function Game(appId, gameTitle) {
   }
 
   this.app_id = appId + "";
-  this.game_title = gameTitle.trim().toLowerCase();
+  this.game_title = sanitize(gameTitle).trim().toLowerCase();
 }
 
 // save object to store
@@ -35,6 +35,7 @@ Game.prototype.save = function () {
 
   redis.hset(KEY, self.game_title, self.app_id)
     .then(function () {
+      log.info('stored', self);
       deferred.resolve(self);
     });
 
@@ -73,7 +74,12 @@ Game.all = function () {
       return new Game(appId, gameTitle);
     });
 
-    deferred.resolve(games);
+    var result = {
+      count: games.length,
+      games: games
+    };
+
+    deferred.resolve(result);
   });
 
   return deferred.promise;
@@ -90,3 +96,7 @@ Game.count = function () {
 
   return deferred.promise;
 };
+
+function sanitize(str) {
+  return str.replace(/™|®/g,'');
+}

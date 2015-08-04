@@ -46,9 +46,7 @@ router.get('/find', function (req, res) {
           
           if (req.query.title === data.game_title) {
             var game = new Game(data.app_id, data.game_title);
-            game.save().then(function () {
-              log.info('stored', game);
-            });
+            game.save();
           }
 
           res.json(respWrapper(null, data));

@@ -9,6 +9,8 @@ var moment  = require('moment');
 var config  = require('config');
 var log     = require('../../config/logger').subLog('game');
 
+var Game    = require('../models').Game;
+
 log.debug('game service');
 
 // var steamKey = {
@@ -83,6 +85,7 @@ GameService.prototype.get = function (id) {
     var DATE  = '.release_date .date';
     var TAGS  = '.popular_tags a';
 
+    game.appid        = id;
     game.title        = $(TITLE).text();
     game.img          = $(IMG).attr('src');
     game.release_date = $(DATE).text();
@@ -96,6 +99,8 @@ GameService.prototype.get = function (id) {
       game.tags.push($(this).text().trim());
     });
     game.tags = game.tags.splice(0, 5);
+
+    save(game);
 
     deferred.resolve(game);
   })
@@ -176,4 +181,18 @@ function generateJarForStorePage() {
   jar.setCookie(cookies[1], url);;
 
   return jar;
+}
+
+// attempt to save game id and title
+//
+function save(gameData) {
+  try {
+    var game = new Game(
+      gameData.appid || gameData.appId || gameData.app_id,
+      gameData.title || gameData.game_title
+    );
+    game.save();
+  } catch (ex) {
+    log.error(ex);
+  }
 }
