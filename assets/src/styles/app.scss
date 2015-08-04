@@ -41,6 +41,21 @@ input {
   }
 }
 
+.nav {
+  float: right;
+
+  li {
+    display: inline-block;
+    padding-left: 20px;
+  }
+
+  .active {
+    a {
+      color: #ccc;
+    }
+  }
+}
+
 .content-area {
   margin: 0 30px;
 }
