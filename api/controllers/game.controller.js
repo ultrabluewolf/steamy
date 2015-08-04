@@ -35,6 +35,15 @@ router.get('/:id/news', function(req, res) {
 // find appid for queried title
 //
 router.get('/find', function (req, res) {
+  if (!req.query.title) {
+    var errMsg = {
+      name: 'title-required',
+      statusCode: 400,
+      message: 'title not found in query!'
+    };
+    log.error(errMsg);
+    return res.json(respWrapper(errMsg));
+  }
 
   Game.getByTitle(req.query.title)
     .then(function (game) {
