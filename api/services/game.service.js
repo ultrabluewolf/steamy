@@ -100,7 +100,7 @@ GameService.prototype.get = function (id) {
     });
     game.tags = game.tags.splice(0, 5);
 
-    save(game);
+    Game.add(game);
 
     deferred.resolve(game);
   })
@@ -181,18 +181,4 @@ function generateJarForStorePage() {
   jar.setCookie(cookies[1], url);;
 
   return jar;
-}
-
-// attempt to save game id and title
-//
-function save(gameData) {
-  try {
-    var game = new Game(
-      gameData.appid || gameData.appId || gameData.app_id,
-      gameData.title || gameData.game_title
-    );
-    game.save();
-  } catch (ex) {
-    log.error(ex);
-  }
 }

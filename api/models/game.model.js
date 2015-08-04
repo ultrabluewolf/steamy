@@ -42,6 +42,20 @@ Game.prototype.save = function () {
   return deferred.promise;
 };
 
+// attempt to save game id and title
+//
+Game.add = function (gameData) {
+  try {
+    var game = new Game(
+      gameData.appid || gameData.appId || gameData.app_id,
+      gameData.name || gameData.title || gameData.game_title
+    );
+    game.save();
+  } catch (ex) {
+    log.error(ex);
+  }
+}
+
 // fetch game object from store
 //
 Game.getByTitle = function (gameTitle) {

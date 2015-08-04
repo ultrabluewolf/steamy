@@ -8,6 +8,8 @@ var moment  = require('moment');
 var config  = require('config');
 var log     = require('../../config/logger').subLog('user');
 
+var Game    = require('../models').Game;
+
 log.debug('user service');
 
 // persona states
@@ -121,6 +123,8 @@ UserService.prototype.getGamesById = function (id) {
         icon: currGameImgUrl.replace('{hash}', game.img_icon_url),
         logo: currGameImgUrl.replace('{hash}', game.img_logo_url)
       };
+      Game.add(game);
+
       return game;
     });
 
