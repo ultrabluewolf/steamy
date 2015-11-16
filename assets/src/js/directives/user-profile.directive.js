@@ -5,7 +5,8 @@ app.directive('userProfile', function ($state){
   
   return {
     scope: {
-      user: '=userProfile'
+      user:      '=userProfile',
+      onClickFn: '&userProfileOnClick'
     },
     // controller: function($scope, $element, $attrs, $transclude) {},
     // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
@@ -26,12 +27,29 @@ app.directive('userProfile', function ($state){
 
       }
 
+      $scope.onIconClick = function () {
+        var isToggled = $scope.onClickFn();
+        
+        if (isToggled === undefined) {
+          return;
+        }
+
+        if (isToggled) {
+          iElm.addClass('selected');
+        } else {
+          iElm.removeClass('selected')
+        }
+
+      };
+
       $scope.toCommunityId = function (user) {
         var str = user.profileurl;
         if (str) {
           var matched = str.match(/\/id\/(\S+)/);
           if (matched && matched[1]) {
-            return matched[1].slice(0, -1)
+            var communityId = matched[1].slice(0, -1);
+            user.communityId = communityId;
+            return communityId;
           }
         }
 

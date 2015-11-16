@@ -1,14 +1,23 @@
 
-<div>
-  
+<div class="shared-games">
+
   <div user-searchbar></div>
 
   <!-- Profile -->
 
   <div user-profile="data.user" class="main"></div>
 
-  <div class="shared-games-nav" ng-if="isFinished.userProfile">
-    <a ng-href="/users/{{ communityId }}/games/shared">Shared Games</a>
+  <div class="button-panel" ng-if="isFinished.userProfile">
+
+    <button class="btn-icon" 
+      ng-click="fetchSharedGames()"
+    >
+      <span ng-if="refreshNeededFlag">
+        refresh shared games
+      </span>
+      <i class="fa fa-refresh" alt="refresh shared games"></i>
+    </button>
+
   </div>
 
   <!-- Friends -->
@@ -24,6 +33,7 @@
     <ul>
       <li ng-repeat="friend in data.friends" 
         user-profile="friend"
+        user-profile-on-click="toggleFilter(friend)"
       ></li>
     </ul>
   </div>

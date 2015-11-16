@@ -1,12 +1,16 @@
 <div class="user-profile"
   ng-if="user"
+  ng-init="communityId = toCommunityId(user)"
+  ng-click="communityId ? onIconClick() : null;"
 >
 
-  <div class="user-icon" style="background-image: url({{ user.avatarfull }});">
+  <div class="user-icon" 
+    style="background-image: url({{ user.avatarfull }});"
+  >
     <img ng-hide="true" ng-src="{{user.avatarfull}}" alt="user avatar" />
   </div>
 
-  <h3 ng-init="communityId = toCommunityId(user)">
+  <h3>
     
     <a ng-if="communityId" 
       ng-href="/users/{{ communityId }}"

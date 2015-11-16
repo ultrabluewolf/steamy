@@ -23,7 +23,12 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider) {
       controller: 'UserController',
       templateUrl: 'users/index.html'
     })
-    .state('gamesInitial', {
+    .state('user-shared-games', {
+      url: '/users/:id/games/shared',
+      controller: 'UserSharedGamesController',
+      templateUrl: 'users/shared-games.html'
+    })
+    .state('games-initial', {
       url: '/games',
       controller: 'GameController',
       templateUrl: 'games/index.html'

@@ -11,12 +11,13 @@ app.controller('UserController', function (
 ){
 
   $scope.data = $scope.data || {};
-  $scope.isFinished = {};
+  $scope.communityId = $stateParams.id;
+  $scope.isFinished  = {};
 
   if ($stateParams.id) {
     LoadingIndicator.loading();
 
-   var userProm = UserService
+    var userProm = UserService
       .get($stateParams.id)
       .then(function (data) {
         $scope.isFinished.userProfile = true;
