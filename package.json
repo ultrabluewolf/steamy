@@ -8,7 +8,7 @@
     "start": "node app",
     "test": "mocha tests/*"
   },
-  "author": "Britney L. <ultrabluewolf-fb2@yahoo.com>",
+  "author": "B. Luckey <ultrabluewolf-fb2@yahoo.com>",
   "license": "MIT",
   "cacheDirectories": [
     "node_modules",
