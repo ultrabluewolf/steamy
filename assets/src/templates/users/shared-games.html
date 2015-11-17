@@ -20,25 +20,6 @@
 
   </div>
 
-  <!-- Friends -->
-
-  <div class="friend-list"
-    ng-if="isFinished.userProfile && data.friends" 
-  >
-    <div class="friend-list-banner">
-      <h2>FRIENDS</h2>
-      <span>{{ data.friends.length }}</span>
-    </div>
-
-    <ul>
-      <li ng-repeat="friend in data.friends" 
-        user-profile="friend"
-        user-profile-on-click="toggleFilter(friend)"
-      ></li>
-    </ul>
-  </div>
-  
-
   <!-- Games -->
 
   <div class="game-list"
@@ -76,6 +57,24 @@
         </div>
 
       </li>
+    </ul>
+  </div>
+
+  <!-- Friends -->
+
+  <div class="friend-list"
+    ng-if="isFinished.userProfile && data.friends" 
+  >
+    <div class="friend-list-banner">
+      <h2>FRIENDS</h2>
+      <span>{{ data.friends.length }}</span>
+    </div>
+
+    <ul>
+      <li ng-repeat="friend in data.friends" 
+        user-profile="friend"
+        user-profile-on-click="toggleFilter(friend)"
+      ></li>
     </ul>
   </div>
 

@@ -38,3 +38,20 @@
   }
 
 }
+
+// shared games view
+.shared-games {
+
+  .friend-list {
+    li {
+      display: block;
+    }
+  }
+
+  .game-list {
+    position: absolute;
+    left: 300px;
+    margin-top: 40px;
+  }
+
+}
