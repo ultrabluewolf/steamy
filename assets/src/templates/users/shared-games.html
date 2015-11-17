@@ -70,8 +70,18 @@
       <span>{{ data.friends.length }}</span>
     </div>
 
+    <div class="filters">
+      <input type="text" 
+        placeholder="filter friends"
+        ng-model="friendTextFilter"
+        ng-model-options="{
+          debounce: 500
+        }"
+      />
+    </div>
+
     <ul>
-      <li ng-repeat="friend in data.friends" 
+      <li ng-repeat="friend in data.friends | filter:friendTextFilter" 
         user-profile="friend"
         user-profile-on-click="toggleFilter(friend)"
       ></li>
