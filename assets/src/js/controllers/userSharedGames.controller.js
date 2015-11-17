@@ -98,6 +98,12 @@ app.controller('UserSharedGamesController', function (
 
             }); //end return
         }); //end .map(ids)
+
+        if (gamesProms.length === 0) {
+          LoadingIndicator.ready();
+          $log.debug('games owned', $scope.data.games.length);
+        }
+
       }); //end .then()
 
   };
